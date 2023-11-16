@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.4s;
+}
+
+body {
+  background-color: #18181c;
+  font-family: "Pacifico", cursive;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.container {
+  .result {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.75rem;
+  }
+  .dice {
+    display: flex;
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+  .first-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .pip {
+      background-color: maroon;
+    }
+  }
+
+  .second-face {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .second-face .pip:nth-of-type(2) {
+    align-self: flex-end;
+  }
+
+  .third-face {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .third-face .pip:nth-of-type(2) {
+    align-self: center;
+  }
+
+  .third-face .pip:nth-of-type(3) {
+    align-self: flex-end;
+  }
+
+  .fourth-face,
+  .sixth-face {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fourth-face .column,
+  .sixth-face .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .fifth-face {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fifth-face .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .fifth-face .column:nth-of-type(2) {
+    justify-content: center;
+  }
+
+  [class$="face"] {
+    margin: 16px;
+    padding: 4px;
+    background-color: #e7e7e7;
+    width: 104px;
+    height: 104px;
+    object-fit: contain;
+    box-shadow: inset 0 5px white, inset 0 -5px #bbb, inset 5px 0 #d7d7d7,
+      inset -5px 0 #d7d7d7;
+    border-radius: 10%;
+  }
+
+  .pip {
+    // display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin: 4px;
+    background-color: #333;
+    box-shadow: inset 0 3px #111, inset 0 -3px #555;
+  }
+}
+
+.d-none {
+  display: none !important;
+}
