@@ -13,19 +13,28 @@ function App() {
   const [random, setRandom] = useState(null);
   const [results, setResults] = useState('');
 
+
   useEffect(() => {
-    const newValue = parseInt(prompt('Enter a value between 1 and 6:'), 6);
-    setValue(newValue);
+    if (value === null && random === null) {
+      const newValue = parseInt(prompt('Enter a value between 1 and 6:'), 7);
+      if (!isNaN(newValue) && newValue >= 1 && newValue <= 6) {
+        setValue(newValue);
 
-    const newRandom = Math.floor(Math.random() * 6) + 1;
-    setRandom(newRandom);
+        const newRandom = Math.floor(Math.random() * 6) + 1;
+        setRandom(newRandom);
 
-    if (newRandom === newValue) {
-      setResults('You Win!');
-    } else {
-      setResults('You Lose!');
+        if (newRandom === newValue) {
+          setResults('You Win!');
+        } else {
+          setResults('You Lose!');
+        }
+      } else {
+        alert("Lütfen değerli bir sayı giriniz")
+      }
+
     }
-  }, []);
+  }, [value]);
+  console.log(value)
 
   const renderDiceComponent = (value) => {
     switch (value) {
@@ -50,16 +59,21 @@ function App() {
     <div className="container">
       <div className="dice">
         <div className="random">
-          <span className="mine">random</span>
+          {value >= 1 && random <= 6 &&
+            <span className="mine">random</span>
+          }
           {renderDiceComponent(random)}
         </div>
 
         <div className="value">
-          <span className="yours">yours</span>
+          {value >= 1 && random <= 6 &&
+            <span className="yours">yours</span>
+          }
           {renderDiceComponent(value)}
         </div>
       </div>
       <h1 className="result">{results}</h1>
+
     </div>
   );
 }
